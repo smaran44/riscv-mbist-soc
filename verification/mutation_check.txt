@@ -1,0 +1,5 @@
+Mutation check on a temporary copy of wb_mbist_regs.sv
+Forced the saved first-failure bit mask to zero.
+Expected outcome: the integrated self-check fails on the first faulty run.
+FATAL: tb/tb_soc.sv:107: Firmware result seq=2 status=0000000a addr=0000001f data=0000ffef detail=00000200 count=2 GPIO=08 IRQ=1
+Simulator exit status 1

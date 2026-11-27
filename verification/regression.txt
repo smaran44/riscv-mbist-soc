@@ -1,0 +1,29 @@
+[legacy] original six-instruction program
+PASS tb_legacy: original program x7=8 x10=1
+
+[cpu] instruction, exception and integration checks
+PASS tb_cpu: 40 RV32I mnemonic bins, six Zicsr operations, 20 precise trap returns, 66 load-use bubbles, busy-bank ERR, early stop and checkerboard
+
+[soc] 64-byte SRAM, two bus wait clocks
+RUN 1  irq_mode=0  status=06 addr=00 expected/actual=0000 step/mask=0000 count=0 sig=13 gpio=04 comparisons=320
+RUN 2  irq_mode=1  status=0a addr=1f expected/actual=ffef step/mask=0210 count=2 sig=5f gpio=08 comparisons=320
+RUN 3  irq_mode=1  status=06 addr=00 expected/actual=0000 step/mask=0000 count=0 sig=13 gpio=04 comparisons=320
+RUN 4  irq_mode=0  status=0a addr=2b expected/actual=0004 step/mask=0104 count=3 sig=ce gpio=08 comparisons=320
+RUN 1  irq_mode=0  status=06 addr=00 expected/actual=0000 step/mask=0000 count=0 sig=13 gpio=04 comparisons=320
+PASS tb_soc BANK_AW=6 BUS_WAIT=2: CPU logs, IRQ, isolation, March scoreboard and reset recovery
+
+[fullbank] 256-byte SRAM, zero bus wait clocks
+RUN 1  irq_mode=0  status=06 addr=00 expected/actual=0000 step/mask=0000 count=0 sig=06 gpio=04 comparisons=1280
+RUN 2  irq_mode=1  status=0a addr=1f expected/actual=ffef step/mask=0210 count=2 sig=d3 gpio=08 comparisons=1280
+RUN 3  irq_mode=1  status=06 addr=00 expected/actual=0000 step/mask=0000 count=0 sig=06 gpio=04 comparisons=1280
+RUN 4  irq_mode=0  status=0a addr=2b expected/actual=0004 step/mask=0104 count=3 sig=fc gpio=08 comparisons=1280
+RUN 1  irq_mode=0  status=06 addr=00 expected/actual=0000 step/mask=0000 count=0 sig=06 gpio=04 comparisons=1280
+PASS tb_soc BANK_AW=8 BUS_WAIT=0: CPU logs, IRQ, isolation, March scoreboard and reset recovery
+
+[fpga] physical SRAM path and board-facing pins
+PASS tb_fpga: synchronized reset, inferred 256-byte SRAM, physical GPIO=04, signature=06
+
+[mbist] eight standalone MBIST cases
+PASS tb_mbist_top: 8 of 8 vendor scenarios
+
+6/6 simulation configurations passed

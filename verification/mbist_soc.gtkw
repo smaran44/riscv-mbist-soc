@@ -1,0 +1,45 @@
+[*] Signals for the included 64-byte firmware-driven MBIST run.
+[timestart] 24935000
+*-14.000000 24955000 -1
+@200
+-CPU and Wishbone
+@28
+tb_soc.dut.clk
+tb_soc.dut.cyc
+tb_soc.dut.stb
+tb_soc.dut.we
+tb_soc.dut.ack
+tb_soc.dut.err
+@22
+tb_soc.dut.addr[31:0]
+tb_soc.dut.wdata[31:0]
+tb_soc.dut.rdata[31:0]
+@200
+-March C minus and SRAM
+@28
+tb_soc.dut.start
+tb_soc.dut.owned
+tb_soc.dut.mbist.mem_ce_n
+tb_soc.dut.mbist.mem_we_n
+tb_soc.dut.mbist.compare_en
+@22
+tb_soc.dut.mbist.current_step[3:0]
+tb_soc.dut.mbist.mem_addr[5:0]
+tb_soc.dut.mbist.bist_din[7:0]
+tb_soc.dut.mbist.bist_dout[7:0]
+tb_soc.dut.mbist.error_bitmap[7:0]
+@28
+tb_soc.dut.mbist.mismatch
+@200
+-Diagnostics and firmware
+@22
+tb_soc.dut.mbist.diag_first_fail_addr[5:0]
+tb_soc.dut.mbist.diag_fail_count[15:0]
+tb_soc.dut.regs.saved_count[15:0]
+@28
+tb_soc.dut.raw_done
+tb_soc.dut.irq
+tb_soc.dut.trap_event
+@22
+tb_soc.dut.trap_cause[31:0]
+tb_soc.dut.gpio_out[7:0]

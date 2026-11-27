@@ -1,0 +1,10 @@
+Board-neutral structural synthesis of fpga_top
+sv2v v0.0.13
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+
+Top uses the synchronous single-port test SRAM with FAULT_MODEL=0.
+Commands: hierarchy -check -top fpga_top, proc, opt, memory -nomap, opt, check -assert, stat.
+Result: Found and reported 0 problems.
+Hierarchy statistic: four generic $mem_v2 cells after coarse memory lowering.
+Warnings: the generic front end reports limited tri-state support and expands a behavioral memory into registers while parsing the fault model.
+The run does not perform board-specific technology mapping, place and route, or timing analysis.
